@@ -9,12 +9,13 @@
 import SwiftUI
 
 @main
-struct WidgetExamplesApp: App {
+struct TransitWidget: App {
+    @StateObject private var fetcher = TransitDataFetcher()
+    
     var body: some Scene {
-        let moc = CoreDataStack.shared.managedObjectContext
         return WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, moc)
+            NearbyStationView()
+                .environmentObject(fetcher)
         }
     }
 }
