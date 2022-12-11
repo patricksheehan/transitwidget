@@ -2,16 +2,17 @@ import CoreData
 import SwiftUI
 import WidgetKit
 
-struct NearbyStationView: View {
+struct NearbyStationView: View, Sendable {
     @EnvironmentObject var fetcher: TransitDataFetcher
     
     var body: some View {
         VStack {
             Text(fetcher.stationSnapshot.stationName)
-            for routeSnapshot in fetcher.stationSnapshot.routeSnapshots {
+            ForEach(fetcher.stationSnapshot.routeSnapshots) {
+                routeSnapshot in
                 HStack {
                     Text(routeSnapshot.routeName)
-                    Text(routeSnapshot.departureMinutes)
+                    Text(routeSnapshot.departureMinutes.map{String($0)}.joined(separator: ","))
                 }
             }
         }

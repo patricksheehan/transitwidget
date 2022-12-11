@@ -1,6 +1,7 @@
 import Foundation
 
-struct RouteSnapshot {
+struct RouteSnapshot: Identifiable {
+    let id = UUID()
     let routeName: String
     let departureMinutes: [Int]
 }

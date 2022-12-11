@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CD6132F22943FB330031CA0E /* google_transit_20221001-20230212_v8 in Resources */ = {isa = PBXBuildFile; fileRef = CD6132F12943FB330031CA0E /* google_transit_20221001-20230212_v8 */; };
-		CD6132F62943FFD90031CA0E /* gtfs-realtime.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6132F32943FBF90031CA0E /* gtfs-realtime.pb.swift */; };
-		CD6132F72943FFDC0031CA0E /* gtfs-realtime.proto in Sources */ = {isa = PBXBuildFile; fileRef = CD6132EF2943F94B0031CA0E /* gtfs-realtime.proto */; };
 		CD6132F9294421DD0031CA0E /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6132F8294421DD0031CA0E /* DataModels.swift */; };
 		CD6132FA294421DD0031CA0E /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6132F8294421DD0031CA0E /* DataModels.swift */; };
 		CD6132FC29442C1C0031CA0E /* TransitDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6132FB29442C1C0031CA0E /* TransitDataFetcher.swift */; };
@@ -64,7 +62,6 @@
 /* Begin PBXFileReference section */
 		CD6132EF2943F94B0031CA0E /* gtfs-realtime.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = "gtfs-realtime.proto"; sourceTree = "<group>"; };
 		CD6132F12943FB330031CA0E /* google_transit_20221001-20230212_v8 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "google_transit_20221001-20230212_v8"; sourceTree = "<group>"; };
-		CD6132F32943FBF90031CA0E /* gtfs-realtime.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "gtfs-realtime.pb.swift"; sourceTree = "<group>"; };
 		CD6132F8294421DD0031CA0E /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
 		CD6132FB29442C1C0031CA0E /* TransitDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitDataFetcher.swift; sourceTree = "<group>"; };
 		E5421356253879B700CCC9C3 /* TransitWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransitWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +134,8 @@
 				CD6132F8294421DD0031CA0E /* DataModels.swift */,
 				CD6132FB29442C1C0031CA0E /* TransitDataFetcher.swift */,
 				E542135B253879B700CCC9C3 /* NearbyStationView.swift */,
+				CD6132EF2943F94B0031CA0E /* gtfs-realtime.proto */,
+				CD6132F12943FB330031CA0E /* google_transit_20221001-20230212_v8 */,
 				E542138825387AB600CCC9C3 /* Resources */,
 				E554989C2552BE150066870B /* Supporting Files */,
 			);
@@ -165,9 +164,6 @@
 		E542138825387AB600CCC9C3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CD6132F12943FB330031CA0E /* google_transit_20221001-20230212_v8 */,
-				CD6132EF2943F94B0031CA0E /* gtfs-realtime.proto */,
-				CD6132F32943FBF90031CA0E /* gtfs-realtime.pb.swift */,
 				E542135D253879BB00CCC9C3 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -349,9 +345,7 @@
 				E55498382551D2160066870B /* Contact.swift in Sources */,
 				E54214262538B77500CCC9C3 /* DataModel.xcdatamodeld in Sources */,
 				E54213E2253898DA00CCC9C3 /* FileManager+Ext.swift in Sources */,
-				CD6132F72943FFDC0031CA0E /* gtfs-realtime.proto in Sources */,
 				E54214292538B77900CCC9C3 /* CoreDataStack.swift in Sources */,
-				CD6132F62943FFD90031CA0E /* gtfs-realtime.pb.swift in Sources */,
 				CD6132FC29442C1C0031CA0E /* TransitDataFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
