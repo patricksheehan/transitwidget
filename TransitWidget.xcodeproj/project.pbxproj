@@ -7,18 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CD6132F22943FB330031CA0E /* google_transit_20221001-20230212_v8 in Resources */ = {isa = PBXBuildFile; fileRef = CD6132F12943FB330031CA0E /* google_transit_20221001-20230212_v8 */; };
-		CD6132F9294421DD0031CA0E /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6132F8294421DD0031CA0E /* DataModels.swift */; };
-		CD6132FA294421DD0031CA0E /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6132F8294421DD0031CA0E /* DataModels.swift */; };
-		CD6132FC29442C1C0031CA0E /* TransitDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6132FB29442C1C0031CA0E /* TransitDataFetcher.swift */; };
-		CD6132FD29442C1C0031CA0E /* TransitDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6132FB29442C1C0031CA0E /* TransitDataFetcher.swift */; };
-		E542135A253879B700CCC9C3 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5421359253879B700CCC9C3 /* App.swift */; };
-		E542135C253879B700CCC9C3 /* NearbyStationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E542135B253879B700CCC9C3 /* NearbyStationView.swift */; };
-		E542135E253879BB00CCC9C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E542135D253879BB00CCC9C3 /* Assets.xcassets */; };
+		CD90BDA92946B24100CE1056 /* Transit in Frameworks */ = {isa = PBXBuildFile; productRef = CD90BDA82946B24100CE1056 /* Transit */; };
+		CD90BDAC2946DB3900CE1056 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = CD90BDAB2946DB3900CE1056 /* SwiftProtobuf */; };
+		CD90BDAE2946DB3900CE1056 /* SwiftProtobufPluginLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = CD90BDAD2946DB3900CE1056 /* SwiftProtobufPluginLibrary */; };
+		CD90BDB02946DB3900CE1056 /* protoc-gen-swift in Frameworks */ = {isa = PBXBuildFile; productRef = CD90BDAF2946DB3900CE1056 /* protoc-gen-swift */; };
+		CDBC92292946E0BC00679FDA /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBC920B2946E0BC00679FDA /* DataModels.swift */; };
+		CDBC922A2946E0BC00679FDA /* gtfs-realtime.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBC920C2946E0BC00679FDA /* gtfs-realtime.pb.swift */; };
+		CDBC922B2946E0BC00679FDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBC920F2946E0BC00679FDA /* Assets.xcassets */; };
+		CDBC922D2946E0BC00679FDA /* fare_attributes.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBC92142946E0BC00679FDA /* fare_attributes.txt */; };
+		CDBC922E2946E0BC00679FDA /* transfers.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBC92152946E0BC00679FDA /* transfers.txt */; };
+		CDBC922F2946E0BC00679FDA /* agency.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBC92162946E0BC00679FDA /* agency.txt */; };
+		CDBC92302946E0BC00679FDA /* fare_rules.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBC92172946E0BC00679FDA /* fare_rules.txt */; };
+		CDBC92312946E0BC00679FDA /* calendar_dates.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBC92182946E0BC00679FDA /* calendar_dates.txt */; };
+		CDBC92322946E0BC00679FDA /* stop_times.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBC92192946E0BC00679FDA /* stop_times.txt */; };
+		CDBC92332946E0BC00679FDA /* directions.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBC921A2946E0BC00679FDA /* directions.txt */; };
+		CDBC92342946E0BC00679FDA /* shapes.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBC921B2946E0BC00679FDA /* shapes.txt */; };
+		CDBC92352946E0BC00679FDA /* trips.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBC921C2946E0BC00679FDA /* trips.txt */; };
+		CDBC92362946E0BC00679FDA /* route_attributes.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBC921D2946E0BC00679FDA /* route_attributes.txt */; };
+		CDBC92372946E0BC00679FDA /* feed_info.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBC921E2946E0BC00679FDA /* feed_info.txt */; };
+		CDBC92382946E0BC00679FDA /* stops.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBC921F2946E0BC00679FDA /* stops.txt */; };
+		CDBC92392946E0BC00679FDA /* rider_categories.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBC92202946E0BC00679FDA /* rider_categories.txt */; };
+		CDBC923A2946E0BC00679FDA /* fare_rider_categories.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBC92212946E0BC00679FDA /* fare_rider_categories.txt */; };
+		CDBC923B2946E0BC00679FDA /* calendar_attributes.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBC92222946E0BC00679FDA /* calendar_attributes.txt */; };
+		CDBC923C2946E0BC00679FDA /* realtime_routes.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBC92232946E0BC00679FDA /* realtime_routes.txt */; };
+		CDBC923D2946E0BC00679FDA /* calendar.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBC92242946E0BC00679FDA /* calendar.txt */; };
+		CDBC923E2946E0BC00679FDA /* routes.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDBC92252946E0BC00679FDA /* routes.txt */; };
+		CDBC923F2946E0BC00679FDA /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBC92262946E0BC00679FDA /* UI.swift */; };
+		CDBC92402946E0BC00679FDA /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBC92272946E0BC00679FDA /* App.swift */; };
 		E542137025387A0200CCC9C3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E542136F25387A0200CCC9C3 /* WidgetKit.framework */; };
 		E542137225387A0300CCC9C3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E542137125387A0200CCC9C3 /* SwiftUI.framework */; };
 		E542137725387A0600CCC9C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E542137625387A0600CCC9C3 /* Assets.xcassets */; };
-		E542137B25387A0600CCC9C3 /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E542136D25387A0200CCC9C3 /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E542137B25387A0600CCC9C3 /* WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E542136D25387A0200CCC9C3 /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E54213D42538931900CCC9C3 /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54213D32538931900CCC9C3 /* UserDefaults+Ext.swift */; };
 		E54213D92538932300CCC9C3 /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54213D32538931900CCC9C3 /* UserDefaults+Ext.swift */; };
 		E54213DD2538979B00CCC9C3 /* FileManager+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54213DC2538979B00CCC9C3 /* FileManager+Ext.swift */; };
@@ -46,35 +65,51 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E542137F25387A0600CCC9C3 /* Embed App Extensions */ = {
+		E542137F25387A0600CCC9C3 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				E542137B25387A0600CCC9C3 /* WidgetExtension.appex in Embed App Extensions */,
+				E542137B25387A0600CCC9C3 /* WidgetExtension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CD6132EF2943F94B0031CA0E /* gtfs-realtime.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; path = "gtfs-realtime.proto"; sourceTree = "<group>"; };
-		CD6132F12943FB330031CA0E /* google_transit_20221001-20230212_v8 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "google_transit_20221001-20230212_v8"; sourceTree = "<group>"; };
-		CD6132F8294421DD0031CA0E /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
-		CD6132FB29442C1C0031CA0E /* TransitDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitDataFetcher.swift; sourceTree = "<group>"; };
+		CDBC920B2946E0BC00679FDA /* DataModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
+		CDBC920C2946E0BC00679FDA /* gtfs-realtime.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "gtfs-realtime.pb.swift"; sourceTree = "<group>"; };
+		CDBC920F2946E0BC00679FDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CDBC92112946E0BC00679FDA /* App.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
+		CDBC92122946E0BC00679FDA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDBC92142946E0BC00679FDA /* fare_attributes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fare_attributes.txt; sourceTree = "<group>"; };
+		CDBC92152946E0BC00679FDA /* transfers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = transfers.txt; sourceTree = "<group>"; };
+		CDBC92162946E0BC00679FDA /* agency.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = agency.txt; sourceTree = "<group>"; };
+		CDBC92172946E0BC00679FDA /* fare_rules.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fare_rules.txt; sourceTree = "<group>"; };
+		CDBC92182946E0BC00679FDA /* calendar_dates.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = calendar_dates.txt; sourceTree = "<group>"; };
+		CDBC92192946E0BC00679FDA /* stop_times.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stop_times.txt; sourceTree = "<group>"; };
+		CDBC921A2946E0BC00679FDA /* directions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = directions.txt; sourceTree = "<group>"; };
+		CDBC921B2946E0BC00679FDA /* shapes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shapes.txt; sourceTree = "<group>"; };
+		CDBC921C2946E0BC00679FDA /* trips.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = trips.txt; sourceTree = "<group>"; };
+		CDBC921D2946E0BC00679FDA /* route_attributes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = route_attributes.txt; sourceTree = "<group>"; };
+		CDBC921E2946E0BC00679FDA /* feed_info.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = feed_info.txt; sourceTree = "<group>"; };
+		CDBC921F2946E0BC00679FDA /* stops.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stops.txt; sourceTree = "<group>"; };
+		CDBC92202946E0BC00679FDA /* rider_categories.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rider_categories.txt; sourceTree = "<group>"; };
+		CDBC92212946E0BC00679FDA /* fare_rider_categories.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fare_rider_categories.txt; sourceTree = "<group>"; };
+		CDBC92222946E0BC00679FDA /* calendar_attributes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = calendar_attributes.txt; sourceTree = "<group>"; };
+		CDBC92232946E0BC00679FDA /* realtime_routes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = realtime_routes.txt; sourceTree = "<group>"; };
+		CDBC92242946E0BC00679FDA /* calendar.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = calendar.txt; sourceTree = "<group>"; };
+		CDBC92252946E0BC00679FDA /* routes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = routes.txt; sourceTree = "<group>"; };
+		CDBC92262946E0BC00679FDA /* UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
+		CDBC92272946E0BC00679FDA /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E5421356253879B700CCC9C3 /* TransitWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransitWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5421359253879B700CCC9C3 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		E542135B253879B700CCC9C3 /* NearbyStationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyStationView.swift; sourceTree = "<group>"; };
-		E542135D253879BB00CCC9C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E5421362253879BB00CCC9C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E542136D25387A0200CCC9C3 /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E542136F25387A0200CCC9C3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		E542137125387A0200CCC9C3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		E542137625387A0600CCC9C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E542137825387A0600CCC9C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E54213CE2538928F00CCC9C3 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
 		E54213CF253892AB00CCC9C3 /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtension.entitlements; sourceTree = "<group>"; };
 		E54213D32538931900CCC9C3 /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
 		E54213DC2538979B00CCC9C3 /* FileManager+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Ext.swift"; sourceTree = "<group>"; };
@@ -91,6 +126,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD90BDB02946DB3900CE1056 /* protoc-gen-swift in Frameworks */,
+				CD90BDAE2946DB3900CE1056 /* SwiftProtobufPluginLibrary in Frameworks */,
+				CD90BDA92946B24100CE1056 /* Transit in Frameworks */,
+				CD90BDAC2946DB3900CE1056 /* SwiftProtobuf in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,11 +145,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CDBC920A2946E0BC00679FDA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CDBC92272946E0BC00679FDA /* App.swift */,
+				CDBC920B2946E0BC00679FDA /* DataModels.swift */,
+				CDBC920C2946E0BC00679FDA /* gtfs-realtime.pb.swift */,
+				CDBC92262946E0BC00679FDA /* UI.swift */,
+				CDBC92132946E0BC00679FDA /* google_transit_20221001-20230212_v8 */,
+				CDBC920E2946E0BC00679FDA /* Resources */,
+				CDBC92102946E0BC00679FDA /* Supporting Files */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CDBC920E2946E0BC00679FDA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CDBC920F2946E0BC00679FDA /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CDBC92102946E0BC00679FDA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CDBC92112946E0BC00679FDA /* App.entitlements */,
+				CDBC92122946E0BC00679FDA /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CDBC92132946E0BC00679FDA /* google_transit_20221001-20230212_v8 */ = {
+			isa = PBXGroup;
+			children = (
+				CDBC92142946E0BC00679FDA /* fare_attributes.txt */,
+				CDBC92152946E0BC00679FDA /* transfers.txt */,
+				CDBC92162946E0BC00679FDA /* agency.txt */,
+				CDBC92172946E0BC00679FDA /* fare_rules.txt */,
+				CDBC92182946E0BC00679FDA /* calendar_dates.txt */,
+				CDBC92192946E0BC00679FDA /* stop_times.txt */,
+				CDBC921A2946E0BC00679FDA /* directions.txt */,
+				CDBC921B2946E0BC00679FDA /* shapes.txt */,
+				CDBC921C2946E0BC00679FDA /* trips.txt */,
+				CDBC921D2946E0BC00679FDA /* route_attributes.txt */,
+				CDBC921E2946E0BC00679FDA /* feed_info.txt */,
+				CDBC921F2946E0BC00679FDA /* stops.txt */,
+				CDBC92202946E0BC00679FDA /* rider_categories.txt */,
+				CDBC92212946E0BC00679FDA /* fare_rider_categories.txt */,
+				CDBC92222946E0BC00679FDA /* calendar_attributes.txt */,
+				CDBC92232946E0BC00679FDA /* realtime_routes.txt */,
+				CDBC92242946E0BC00679FDA /* calendar.txt */,
+				CDBC92252946E0BC00679FDA /* routes.txt */,
+			);
+			path = "google_transit_20221001-20230212_v8";
+			sourceTree = "<group>";
+		};
 		E542134D253879B700CCC9C3 = {
 			isa = PBXGroup;
 			children = (
 				E55551B228E1D3FF005A5321 /* README.md */,
-				E5421358253879B700CCC9C3 /* App */,
+				CDBC920A2946E0BC00679FDA /* App */,
 				E542137325387A0300CCC9C3 /* WidgetExtension */,
 				E54213D22538930900CCC9C3 /* Shared */,
 				E542136E25387A0200CCC9C3 /* Frameworks */,
@@ -125,21 +220,6 @@
 				E542136D25387A0200CCC9C3 /* WidgetExtension.appex */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		E5421358253879B700CCC9C3 /* App */ = {
-			isa = PBXGroup;
-			children = (
-				E5421359253879B700CCC9C3 /* App.swift */,
-				CD6132F8294421DD0031CA0E /* DataModels.swift */,
-				CD6132FB29442C1C0031CA0E /* TransitDataFetcher.swift */,
-				E542135B253879B700CCC9C3 /* NearbyStationView.swift */,
-				CD6132EF2943F94B0031CA0E /* gtfs-realtime.proto */,
-				CD6132F12943FB330031CA0E /* google_transit_20221001-20230212_v8 */,
-				E542138825387AB600CCC9C3 /* Resources */,
-				E554989C2552BE150066870B /* Supporting Files */,
-			);
-			path = App;
 			sourceTree = "<group>";
 		};
 		E542136E25387A0200CCC9C3 /* Frameworks */ = {
@@ -159,14 +239,6 @@
 				E55498AF2552C0B30066870B /* Supporting Files */,
 			);
 			path = WidgetExtension;
-			sourceTree = "<group>";
-		};
-		E542138825387AB600CCC9C3 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				E542135D253879BB00CCC9C3 /* Assets.xcassets */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		E542138D25387AED00CCC9C3 /* Resources */ = {
@@ -206,15 +278,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		E554989C2552BE150066870B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E54213CE2538928F00CCC9C3 /* App.entitlements */,
-				E5421362253879BB00CCC9C3 /* Info.plist */,
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		E55498AF2552C0B30066870B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,7 +305,7 @@
 				E5421352253879B700CCC9C3 /* Sources */,
 				E5421353253879B700CCC9C3 /* Frameworks */,
 				E5421354253879B700CCC9C3 /* Resources */,
-				E542137F25387A0600CCC9C3 /* Embed App Extensions */,
+				E542137F25387A0600CCC9C3 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -250,6 +313,12 @@
 				E542137A25387A0600CCC9C3 /* PBXTargetDependency */,
 			);
 			name = TransitWidget;
+			packageProductDependencies = (
+				CD90BDA82946B24100CE1056 /* Transit */,
+				CD90BDAB2946DB3900CE1056 /* SwiftProtobuf */,
+				CD90BDAD2946DB3900CE1056 /* SwiftProtobufPluginLibrary */,
+				CD90BDAF2946DB3900CE1056 /* protoc-gen-swift */,
+			);
 			productName = WidgetExamples;
 			productReference = E5421356253879B700CCC9C3 /* TransitWidget.app */;
 			productType = "com.apple.product-type.application";
@@ -278,7 +347,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1210;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1410;
 				ORGANIZATIONNAME = "Pawel Wiszenko";
 				TargetAttributes = {
 					E5421355253879B700CCC9C3 = {
@@ -299,7 +368,8 @@
 			);
 			mainGroup = E542134D253879B700CCC9C3;
 			packageReferences = (
-				CD6132F52943FCB00031CA0E /* XCRemoteSwiftPackageReference "swift-protobuf" */,
+				CD90BDA72946B24100CE1056 /* XCRemoteSwiftPackageReference "transit" */,
+				CD90BDAA2946DB3900CE1056 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
 			);
 			productRefGroup = E5421357253879B700CCC9C3 /* Products */;
 			projectDirPath = "";
@@ -316,8 +386,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDBC92382946E0BC00679FDA /* stops.txt in Resources */,
+				CDBC922D2946E0BC00679FDA /* fare_attributes.txt in Resources */,
+				CDBC923B2946E0BC00679FDA /* calendar_attributes.txt in Resources */,
+				CDBC922F2946E0BC00679FDA /* agency.txt in Resources */,
+				CDBC92332946E0BC00679FDA /* directions.txt in Resources */,
+				CDBC923A2946E0BC00679FDA /* fare_rider_categories.txt in Resources */,
+				CDBC92342946E0BC00679FDA /* shapes.txt in Resources */,
+				CDBC92302946E0BC00679FDA /* fare_rules.txt in Resources */,
+				CDBC922B2946E0BC00679FDA /* Assets.xcassets in Resources */,
+				CDBC92352946E0BC00679FDA /* trips.txt in Resources */,
 				E55551B328E1D3FF005A5321 /* README.md in Resources */,
-				E542135E253879BB00CCC9C3 /* Assets.xcassets in Resources */,
+				CDBC92372946E0BC00679FDA /* feed_info.txt in Resources */,
+				CDBC92322946E0BC00679FDA /* stop_times.txt in Resources */,
+				CDBC92392946E0BC00679FDA /* rider_categories.txt in Resources */,
+				CDBC92362946E0BC00679FDA /* route_attributes.txt in Resources */,
+				CDBC923C2946E0BC00679FDA /* realtime_routes.txt in Resources */,
+				CDBC923D2946E0BC00679FDA /* calendar.txt in Resources */,
+				CDBC92312946E0BC00679FDA /* calendar_dates.txt in Resources */,
+				CDBC923E2946E0BC00679FDA /* routes.txt in Resources */,
+				CDBC922E2946E0BC00679FDA /* transfers.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +414,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E542137725387A0600CCC9C3 /* Assets.xcassets in Resources */,
-				CD6132F22943FB330031CA0E /* google_transit_20221001-20230212_v8 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,16 +424,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E542135C253879B700CCC9C3 /* NearbyStationView.swift in Sources */,
 				E5638AEA265D859D00E73B05 /* Widget+Kind.swift in Sources */,
-				E542135A253879B700CCC9C3 /* App.swift in Sources */,
 				E54213D92538932300CCC9C3 /* UserDefaults+Ext.swift in Sources */,
-				CD6132F9294421DD0031CA0E /* DataModels.swift in Sources */,
+				CDBC923F2946E0BC00679FDA /* UI.swift in Sources */,
+				CDBC92402946E0BC00679FDA /* App.swift in Sources */,
 				E55498382551D2160066870B /* Contact.swift in Sources */,
 				E54214262538B77500CCC9C3 /* DataModel.xcdatamodeld in Sources */,
+				CDBC92292946E0BC00679FDA /* DataModels.swift in Sources */,
+				CDBC922A2946E0BC00679FDA /* gtfs-realtime.pb.swift in Sources */,
 				E54213E2253898DA00CCC9C3 /* FileManager+Ext.swift in Sources */,
 				E54214292538B77900CCC9C3 /* CoreDataStack.swift in Sources */,
-				CD6132FC29442C1C0031CA0E /* TransitDataFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,10 +446,8 @@
 				E5D2325E28DA5283002855D1 /* LockScreenWidget.swift in Sources */,
 				E542141E2538B68200CCC9C3 /* CoreDataStack.swift in Sources */,
 				E5638AEB265D859D00E73B05 /* Widget+Kind.swift in Sources */,
-				CD6132FD29442C1C0031CA0E /* TransitDataFetcher.swift in Sources */,
 				E54213DD2538979B00CCC9C3 /* FileManager+Ext.swift in Sources */,
 				E54213D42538931900CCC9C3 /* UserDefaults+Ext.swift in Sources */,
-				CD6132FA294421DD0031CA0E /* DataModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,7 +705,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CD6132F52943FCB00031CA0E /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+		CD90BDA72946B24100CE1056 /* XCRemoteSwiftPackageReference "transit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/richwolf/transit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.3;
+			};
+		};
+		CD90BDAA2946DB3900CE1056 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-protobuf.git";
 			requirement = {
@@ -629,6 +722,29 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CD90BDA82946B24100CE1056 /* Transit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD90BDA72946B24100CE1056 /* XCRemoteSwiftPackageReference "transit" */;
+			productName = Transit;
+		};
+		CD90BDAB2946DB3900CE1056 /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD90BDAA2946DB3900CE1056 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+		CD90BDAD2946DB3900CE1056 /* SwiftProtobufPluginLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD90BDAA2946DB3900CE1056 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobufPluginLibrary;
+		};
+		CD90BDAF2946DB3900CE1056 /* protoc-gen-swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD90BDAA2946DB3900CE1056 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = "protoc-gen-swift";
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E54214212538B76C00CCC9C3 /* DataModel.xcdatamodeld */ = {
