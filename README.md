@@ -1,6 +1,10 @@
 # TransitWidget
 An iOS widget to get realtime transit info quickly.
 
+## TODO
+- Lots of looping to translate between GTFS IDs, could pre-make a hashmap to go from station -> trips
+- Have no idea how to organize the code into files
+- ...
 
 ## GPT journey
 
