@@ -1,62 +1,77 @@
-// Written in collaboration with chatGPT!
-// Lots of non-Dry code here, can deal with it later.
+// Written in collaboration with chatGPT! But sort of barely...
 
 import Foundation
 import SwiftCSV
 
-let delimiter = "\",\""
+protocol GTFSObject {
+    static var fileName: String { get }
+    init(csvRow: [String: String])
+}
 
 struct Stop {
-    let stop_id: String
-    let stop_code: String
-    let stop_name: String
-    let stop_desc: String
-    let stop_lat: Double
-    let stop_lon: Double
-    let zone_id: String
-    let plc_url: String
-    let location_type: Int
-    let parent_station: String
+    let stopID: String
+    let stopName: String
+    let stopLat: Double
+    let stopLon: Double
+    var distanceMiles: Double?
 }
 
-extension Stop: Codable {
-    init(dictionary: [String: Any]) throws {
-        self = try JSONDecoder().decode(Stop.self, from: JSONSerialization.data(withJSONObject: dictionary))
+extension Stop: GTFSObject {
+    static let fileName = "stops.txt"
+    
+    init(csvRow: [String: String]) {
+        self.stopID = csvRow["stop_id"]!
+        self.stopName = csvRow["stop_name"]!
+        self.stopLat = Double(csvRow["stop_lat"]!)!
+        self.stopLon = Double(csvRow["stop_lon"]!)!
+        self.parentStation = csvRow["parent_station"]!
+        self.distanceMiles = nil
     }
 }
 
-struct Trip {
-    let route_id: String
-    let service_id: String
-    let trip_id: String
-    let trip_headsign: String
-    let direction_id: String
-    let block_id: String
-    let shape_id: String
-    let trip_load_information: String
-    let wheelchair_accessible: String
-    let bikes_allowed: String
-}
-
-extension Trip: Codable {
-    init(dictionary: [String: Any]) throws {
-        self = try JSONDecoder().decode(Trip.self, from: JSONSerialization.data(withJSONObject: dictionary))
+struct Trip: GTFSObject {
+    static let fileName = "trips.txt"
+    
+    let routeID: String
+    let serviceID: String?
+    let tripID: String
+    
+    init(csvRow: [String: String]) {
+        tripID = csvRow["trip_id"]!
+        routeID = csvRow["route_id"]!
+        serviceID = csvRow["service_id"]
     }
 }
 
-struct Route {
-    let route_id: String
-    let route_short_name: String
-    let route_long_name: String
-    let route_desc: String
-    let route_type: Int
-    let route_url: String
-    let route_color: String
-    let route_text_color: String
+struct Route: GTFSObject {
+    static let fileName = "routes.txt"
+    
+    let routeID: String
+    let routeLongName: String
+        
+    init(csvRow: [String: String]) {
+      routeID = csvRow["route_id"]!
+      routeLongName = csvRow["route_long_name"]!
+    }
 }
 
-extension Route: Codable {
-    init(dictionary: [String: Any]) throws {
-        self = try JSONDecoder().decode(Route.self, from: JSONSerialization.data(withJSONObject: dictionary))
+
+class GTFS {
+    let routes: [Route]
+    let stops: [Stop]
+    let trips: [Trip]
+    
+    init(gtfsFolderUrl: URL) {
+        func structFromUrl<GTFSType>(gtfsFolderUrl: URL, type: GTFSType.Type) -> [GTFSType] where GTFSType : GTFSObject{
+            var returnList: [GTFSType] = []
+            let rows = try! NamedCSV(url: gtfsFolderUrl.appendingPathComponent(type.fileName), delimiter: CSVDelimiter.comma, loadColumns: false).rows
+            for row in rows {
+                returnList.append(type.init(csvRow: row))
+            }
+            return returnList
+        }
+        self.stops = structFromUrl(gtfsFolderUrl: gtfsFolderUrl, type: Stop.self)
+        self.trips = structFromUrl(gtfsFolderUrl: gtfsFolderUrl, type: Trip.self)
+        self.routes = structFromUrl(gtfsFolderUrl: gtfsFolderUrl, type: Route.self)
     }
 }

@@ -10,6 +10,7 @@
 		CD17D0DE2946F45800D99D7C /* google_transit_20221001-20230212_v8 in Resources */ = {isa = PBXBuildFile; fileRef = CD17D0DD2946F45800D99D7C /* google_transit_20221001-20230212_v8 */; };
 		CD17D0E029484C7600D99D7C /* GTFS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD17D0DF29484C7600D99D7C /* GTFS.swift */; };
 		CD17D0E3294869AA00D99D7C /* SwiftCSV in Frameworks */ = {isa = PBXBuildFile; productRef = CD17D0E2294869AA00D99D7C /* SwiftCSV */; };
+		CD756B69294CE82400934CFE /* gtfs.db in Resources */ = {isa = PBXBuildFile; fileRef = CD756B68294CE82400934CFE /* gtfs.db */; };
 		CD90BDAC2946DB3900CE1056 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = CD90BDAB2946DB3900CE1056 /* SwiftProtobuf */; };
 		CD90BDAE2946DB3900CE1056 /* SwiftProtobufPluginLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = CD90BDAD2946DB3900CE1056 /* SwiftProtobufPluginLibrary */; };
 		CD90BDB02946DB3900CE1056 /* protoc-gen-swift in Frameworks */ = {isa = PBXBuildFile; productRef = CD90BDAF2946DB3900CE1056 /* protoc-gen-swift */; };
@@ -65,6 +66,7 @@
 /* Begin PBXFileReference section */
 		CD17D0DD2946F45800D99D7C /* google_transit_20221001-20230212_v8 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "google_transit_20221001-20230212_v8"; sourceTree = "<group>"; };
 		CD17D0DF29484C7600D99D7C /* GTFS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTFS.swift; sourceTree = "<group>"; };
+		CD756B68294CE82400934CFE /* gtfs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = gtfs.db; sourceTree = "<group>"; };
 		CDBC920B2946E0BC00679FDA /* DataModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
 		CDBC920C2946E0BC00679FDA /* gtfs-realtime.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "gtfs-realtime.pb.swift"; sourceTree = "<group>"; };
 		CDBC920F2946E0BC00679FDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		CDBC920A2946E0BC00679FDA /* App */ = {
 			isa = PBXGroup;
 			children = (
+				CD756B68294CE82400934CFE /* gtfs.db */,
 				CDBC92272946E0BC00679FDA /* App.swift */,
 				CDBC920B2946E0BC00679FDA /* DataModels.swift */,
 				CDBC920C2946E0BC00679FDA /* gtfs-realtime.pb.swift */,
@@ -333,6 +336,7 @@
 				CDBC922B2946E0BC00679FDA /* Assets.xcassets in Resources */,
 				CD17D0DE2946F45800D99D7C /* google_transit_20221001-20230212_v8 in Resources */,
 				E55551B328E1D3FF005A5321 /* README.md in Resources */,
+				CD756B69294CE82400934CFE /* gtfs.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
