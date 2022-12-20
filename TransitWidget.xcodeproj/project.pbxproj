@@ -67,6 +67,7 @@
 		CD17D0DD2946F45800D99D7C /* google_transit_20221001-20230212_v8 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "google_transit_20221001-20230212_v8"; sourceTree = "<group>"; };
 		CD17D0DF29484C7600D99D7C /* GTFS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTFS.swift; sourceTree = "<group>"; };
 		CD756B68294CE82400934CFE /* gtfs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = gtfs.db; sourceTree = "<group>"; };
+		CD756B6A295139A200934CFE /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		CDBC920B2946E0BC00679FDA /* DataModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
 		CDBC920C2946E0BC00679FDA /* gtfs-realtime.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "gtfs-realtime.pb.swift"; sourceTree = "<group>"; };
 		CDBC920F2946E0BC00679FDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -150,6 +151,7 @@
 		E542134D253879B700CCC9C3 = {
 			isa = PBXGroup;
 			children = (
+				CD756B6A295139A200934CFE /* Secrets.xcconfig */,
 				E55551B228E1D3FF005A5321 /* README.md */,
 				CD17D0DD2946F45800D99D7C /* google_transit_20221001-20230212_v8 */,
 				CDBC920A2946E0BC00679FDA /* App */,
