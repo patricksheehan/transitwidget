@@ -14,11 +14,15 @@ struct RouteArrivals: Identifiable {
     var arrivalMinutes: [Int]
 }
 
-let TRANSITLAND_API_KEY = "Ea4dX1fEEDvL9XQw6641tOzCuvewdr8x"
+let GTFS_DB_URL = Bundle.main.url(forResource: "gtfs", withExtension: ".db")
 
 class TransitDataFetcher: ObservableObject {
     @Published var stopArrivals: [String: [Int]] = ["Sample Route": [1, 3, 15]]
     @Published var closestStop: Stop = Stop(stopID: "1", stopName: "Sample Stop", stopLat: 20.0, stopLon: 20.0, distanceMiles: 1.2)
+    
+    let gtfsrtUrlString = "https://google.com"
+    
+    var gtfsDb: OpaquePointer?
     
     enum FetchError: Error {
         case badRequest
@@ -33,15 +37,112 @@ class TransitDataFetcher: ObservableObject {
         guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw FetchError.badRequest }
 
         Task { @MainActor in
+            // Get the scheduled trips for the closest stop.
             let now = Date()
             sqlite3_open(GTFS_DB_URL!.path, &gtfsDb)
-            let feedMessage = try TransitRealtime_FeedMessage(serializedData: data)
             let userLocation = CLLocation(latitude: 37.768840, longitude: -122.433270)
             closestStop = getClosestStopSQL(lat: userLocation.coordinate.latitude, lon: userLocation.coordinate.longitude, db: gtfsDb!)!
-            stopArrivals = getRtArrivals(stop: closestStop, feedMessage: feedMessage, db: gtfsDb!)
+            let activeServiceIDs = getActiveServices(date: now, db: gtfsDb!)
+            let trips = getScheduledDepartures(stop: closestStop, serviceIDs: activeServiceIDs, date: now, db: gtfsDb!)
+            
+//            let feedMessage = try TransitRealtime_FeedMessage(serializedData: data)
+//            stopArrivals = getRtArrivals(stop: closestStop, feedMessage: feedMessage, db: gtfsDb!)
             print("hola")
         }
     }
+}
+
+
+func getNoonMinusTwelveHours(date: Date) -> Date {
+    let calendar = Calendar.current
+    let timeZone = calendar.timeZone
+    let localDate = calendar.date(from: calendar.dateComponents(in: timeZone, from: date))!
+    let noon = calendar.date(bySettingHour: 12, minute: 0, second: 0, of: localDate)!
+    let noonMinus12Hours = calendar.date(byAdding: .hour, value: -12, to: noon)!
+    return noonMinus12Hours
+}
+
+
+func dateToGTFSTimestamp(date: Date) -> Int {
+    // GTFS timestamps are calculated relative to "noon minus twelve hours" on the service date.
+    let noonMinus12Hours = getNoonMinusTwelveHours(date: date)
+    let interval = date.timeIntervalSince(noonMinus12Hours)
+    return Int(interval)
+}
+
+
+func gtfsTimestampToDate(serviceDate: Date, gtfsTimestamp: Int) -> Date {
+    // Given a service date and a GTFS timestamp calcualtes the real timestamp.
+    let calendar = Calendar.current
+    let noonMinus12Hours = getNoonMinusTwelveHours(date: serviceDate)
+    let timestamp = calendar.date(byAdding: .second, value: gtfsTimestamp, to: noonMinus12Hours)!
+    
+    return timestamp
+}
+
+
+func getScheduledDepartures(stop: Stop, serviceIDs: [String], date: Date, db: OpaquePointer) -> [String: [Date]] {
+    var tripDepartures: [String: [Date]] = [:]
+    
+    // Get the current timestamp relative to the service day.
+    let currentGTFSTimestamp = dateToGTFSTimestamp(date: date)
+    
+    let serviceIDsBindString = serviceIDs.map{_ in "?"}.joined(separator: ",")
+    
+    let query = """
+        SELECT st.trip_id, st.departure_timestamp
+        FROM stop_times AS st
+        INNER JOIN trips AS t ON st.trip_id = t.trip_id
+        WHERE st.stop_id = ? AND t.service_id IN (\(serviceIDsBindString)) AND st.departure_timestamp > ?
+        """
+    var statement: OpaquePointer?
+    sqlite3_prepare_v2(db, query, -1, &statement, nil)
+    sqlite3_bind_text(statement, 1, stop.stopID, -1, nil)
+    for i in 0...serviceIDs.count - 1 {
+        sqlite3_bind_text(statement, Int32(i + 1), serviceIDs[i], -1, nil)
+    }
+    sqlite3_bind_int(statement, Int32(1 + serviceIDs.count), Int32(currentGTFSTimestamp))
+    
+    
+    while sqlite3_step(statement) == SQLITE_ROW {
+        let tripID = String(cString: sqlite3_column_text(statement, 0))
+        let departueGTFSTimestamp = Int(sqlite3_column_int(statement, 1))
+        let departueDate = gtfsTimestampToDate(serviceDate: date, gtfsTimestamp: departueGTFSTimestamp)
+
+        if tripDepartures[tripID] != nil {
+            tripDepartures[tripID]!.append(departueDate)
+        } else {
+            tripDepartures[tripID] = [departueDate]
+        }
+    }
+    
+    return tripDepartures
+}
+
+
+func getActiveServices(date: Date, db: OpaquePointer) -> [String] {
+    var serviceIDs: [String] = []
+    
+    // Parse the day of the week as a lowercase name (e.g. "monday").
+    let formatter = DateFormatter()
+    formatter.timeZone = TimeZone.current
+    formatter.dateFormat = "EEEE"
+    let weekday = formatter.string(from: date).lowercased()
+    
+    // Parse the date as an integer in YYYYMMDD format
+    formatter.dateFormat = "yyyyMMdd"
+    let dateInteger = Int(formatter.string(from: date))!
+    
+    let query = "SELECT service_id FROM calendar WHERE \(weekday) = 1 AND start_date <= \(dateInteger) AND end_date >= \(dateInteger)"
+    var statement: OpaquePointer?
+    sqlite3_prepare_v2(db, query, -1, &statement, nil)
+    
+    while sqlite3_step(statement) == SQLITE_ROW {
+        let serviceID = String(cString: sqlite3_column_text(statement, 0))
+        serviceIDs.append(serviceID)
+    }
+    
+    return serviceIDs
 }
 
 
