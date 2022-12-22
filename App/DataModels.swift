@@ -18,7 +18,7 @@ struct RouteArrivals: Identifiable {
 let GTFS_DB_URL = Bundle.main.path(forResource: "gtfs", ofType: "db")!
 
 class TransitDataFetcher: ObservableObject {
-    @Published var stopArrivals: [String: [Int]] = ["Sample Route": [1, 3, 15]]
+    @Published var departuresMinutes: [String: [Int]] = ["Sample Route": [1, 3, 15]]
     @Published var closestStop: Stop = Stop(stopID: "1", stopName: "Sample Stop", platformIDs: ["blah"], distanceMiles: 1.2)
     
     let gtfsrtUrlString = "https://google.com"
@@ -44,9 +44,9 @@ class TransitDataFetcher: ObservableObject {
             let userLocation = CLLocation(latitude: 37.768840, longitude: -122.433270)
             closestStop = getClosestStopSQL(lat: userLocation.coordinate.latitude, lon: userLocation.coordinate.longitude, db: gtfsDb)!
             let activeServiceIDs = getActiveServices(date: now, db: gtfsDb)
-            let trips = getScheduledDepartures(stop: closestStop, serviceIDs: activeServiceIDs, date: now, db: gtfsDb)
-//            let feedMessage = try TransitRealtime_FeedMessage(serializedData: data)
-//            stopArrivals = getRtArrivals(stop: closestStop, feedMessage: feedMessage, db: gtfsDb!)
+            var departures = getScheduledDepartures(stop: closestStop, serviceIDs: activeServiceIDs, date: now, db: gtfsDb)
+            let feedMessage = try TransitRealtime_FeedMessage(serializedData: data)
+            updateDepartures(stop: closestStop, feedMessage: feedMessage, departures: departures)
             print("hola")
         }
     }
@@ -171,7 +171,7 @@ func getClosestStopSQL(lat: Double, lon: Double, db: Connection) -> Stop? {
 }
 
 
-func getRoutesWithArrivalTimes(stop: Stop, feedMessage: TransitRealtime_FeedMessage, trips: [Trip], routes: [Route]) -> [String: [Int]] {
+func updateDepartures(stop: Stop, feedMessage: TransitRealtime_FeedMessage, departures: [String: [Date]] ) {
     // Create an empty array to store the routes and arrival times
     var routeArrivalsDict: [String: [Int]] = [String: [Int]]()
     

@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		CD17D0DE2946F45800D99D7C /* google_transit_20221001-20230212_v8 in Resources */ = {isa = PBXBuildFile; fileRef = CD17D0DD2946F45800D99D7C /* google_transit_20221001-20230212_v8 */; };
 		CD17D0E029484C7600D99D7C /* GTFS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD17D0DF29484C7600D99D7C /* GTFS.swift */; };
-		CD17D0E3294869AA00D99D7C /* SwiftCSV in Frameworks */ = {isa = PBXBuildFile; productRef = CD17D0E2294869AA00D99D7C /* SwiftCSV */; };
 		CD756B69294CE82400934CFE /* gtfs.db in Resources */ = {isa = PBXBuildFile; fileRef = CD756B68294CE82400934CFE /* gtfs.db */; };
+		CD756B6D2954163D00934CFE /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = CD756B6C2954163D00934CFE /* SQLite */; };
 		CD90BDAC2946DB3900CE1056 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = CD90BDAB2946DB3900CE1056 /* SwiftProtobuf */; };
 		CD90BDAE2946DB3900CE1056 /* SwiftProtobufPluginLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = CD90BDAD2946DB3900CE1056 /* SwiftProtobufPluginLibrary */; };
 		CD90BDB02946DB3900CE1056 /* protoc-gen-swift in Frameworks */ = {isa = PBXBuildFile; productRef = CD90BDAF2946DB3900CE1056 /* protoc-gen-swift */; };
@@ -97,8 +97,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD756B6D2954163D00934CFE /* SQLite in Frameworks */,
 				CD90BDB02946DB3900CE1056 /* protoc-gen-swift in Frameworks */,
-				CD17D0E3294869AA00D99D7C /* SwiftCSV in Frameworks */,
 				CD90BDAE2946DB3900CE1056 /* SwiftProtobufPluginLibrary in Frameworks */,
 				CD90BDAC2946DB3900CE1056 /* SwiftProtobuf in Frameworks */,
 			);
@@ -266,7 +266,7 @@
 				CD90BDAB2946DB3900CE1056 /* SwiftProtobuf */,
 				CD90BDAD2946DB3900CE1056 /* SwiftProtobufPluginLibrary */,
 				CD90BDAF2946DB3900CE1056 /* protoc-gen-swift */,
-				CD17D0E2294869AA00D99D7C /* SwiftCSV */,
+				CD756B6C2954163D00934CFE /* SQLite */,
 			);
 			productName = WidgetExamples;
 			productReference = E5421356253879B700CCC9C3 /* TransitWidget.app */;
@@ -318,7 +318,7 @@
 			mainGroup = E542134D253879B700CCC9C3;
 			packageReferences = (
 				CD90BDAA2946DB3900CE1056 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
-				CD17D0E1294869AA00D99D7C /* XCRemoteSwiftPackageReference "SwiftCSV" */,
+				CD756B6B2954163D00934CFE /* XCRemoteSwiftPackageReference "SQLite" */,
 			);
 			productRefGroup = E5421357253879B700CCC9C3 /* Products */;
 			projectDirPath = "";
@@ -641,12 +641,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CD17D0E1294869AA00D99D7C /* XCRemoteSwiftPackageReference "SwiftCSV" */ = {
+		CD756B6B2954163D00934CFE /* XCRemoteSwiftPackageReference "SQLite" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/swiftcsv/SwiftCSV.git";
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.8.1;
+				minimumVersion = 0.9.2;
 			};
 		};
 		CD90BDAA2946DB3900CE1056 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
@@ -660,10 +660,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CD17D0E2294869AA00D99D7C /* SwiftCSV */ = {
+		CD756B6C2954163D00934CFE /* SQLite */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CD17D0E1294869AA00D99D7C /* XCRemoteSwiftPackageReference "SwiftCSV" */;
-			productName = SwiftCSV;
+			package = CD756B6B2954163D00934CFE /* XCRemoteSwiftPackageReference "SQLite" */;
+			productName = SQLite;
 		};
 		CD90BDAB2946DB3900CE1056 /* SwiftProtobuf */ = {
 			isa = XCSwiftPackageProductDependency;
