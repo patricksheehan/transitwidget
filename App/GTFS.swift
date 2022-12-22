@@ -5,8 +5,7 @@ import Foundation
 struct Stop {
     let stopID: String
     let stopName: String
-    let stopLat: Double
-    let stopLon: Double
+    let platformIDs: [String]
     var distanceMiles: Double?
 }
 
