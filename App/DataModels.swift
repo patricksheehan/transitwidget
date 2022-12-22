@@ -19,7 +19,7 @@ let GTFS_DB_URL = Bundle.main.path(forResource: "gtfs", ofType: "db")!
 
 class TransitDataFetcher: ObservableObject {
     @Published var stopArrivals: [String: [Int]] = ["Sample Route": [1, 3, 15]]
-    @Published var closestStop: Stop = Stop(stopID: "1", stopName: "Sample Stop", stopLat: 20.0, stopLon: 20.0, platformIDs: ["blah"], distanceMiles: 1.2)
+    @Published var closestStop: Stop = Stop(stopID: "1", stopName: "Sample Stop", platformIDs: ["blah"], distanceMiles: 1.2)
     
     let gtfsrtUrlString = "https://google.com"
     
@@ -43,11 +43,10 @@ class TransitDataFetcher: ObservableObject {
             let gtfsDb = try Connection(GTFS_DB_URL, readonly: true)
             let userLocation = CLLocation(latitude: 37.768840, longitude: -122.433270)
             closestStop = getClosestStopSQL(lat: userLocation.coordinate.latitude, lon: userLocation.coordinate.longitude, db: gtfsDb)!
-//            let activeServiceIDs = getActiveServices(date: now, db: gtfsDb)
-//            let trips = getScheduledDepartures(stop: closestStop, serviceIDs: activeServiceIDs, date: now, db: gtfsDb)
-            
-            //            let feedMessage = try TransitRealtime_FeedMessage(serializedData: data)
-            //            stopArrivals = getRtArrivals(stop: closestStop, feedMessage: feedMessage, db: gtfsDb!)
+            let activeServiceIDs = getActiveServices(date: now, db: gtfsDb)
+            let trips = getScheduledDepartures(stop: closestStop, serviceIDs: activeServiceIDs, date: now, db: gtfsDb)
+//            let feedMessage = try TransitRealtime_FeedMessage(serializedData: data)
+//            stopArrivals = getRtArrivals(stop: closestStop, feedMessage: feedMessage, db: gtfsDb!)
             print("hola")
         }
     }
@@ -93,14 +92,14 @@ func getScheduledDepartures(stop: Stop, serviceIDs: [String], date: Date, db: Co
         assert(stop.platformIDs.count == 1, "Expecting only one platform per stop")
         
         
-        let stops = Table("stops")
+        let stop_times = Table("stop_times")
         let trips = Table("trips")
         let tripID = Expression<String>("trip_id")
         let departureTimestamp = Expression<Int>("departure_timestamp")
         let stopID = Expression<String>("stop_id")
         let serviceID = Expression<String>("service_id")
-        let query = stops.select(tripID, departureTimestamp)
-            .join(trips, on: tripID == tripID)
+        let query = stop_times.select(stop_times[tripID], departureTimestamp)
+            .join(trips, on: stop_times[tripID] == trips[tripID])
             .where(
                 stopID == stop.platformIDs[0] &&
                 serviceIDs.contains(serviceID) &&
@@ -108,34 +107,16 @@ func getScheduledDepartures(stop: Stop, serviceIDs: [String], date: Date, db: Co
             )
         
         for row in try db.prepare(query) {
-            print(row)
+            let tripID = row[tripID]
+            let departueGTFSTimestamp = row[departureTimestamp]
+            let departueDate = gtfsTimestampToDate(serviceDate: date, gtfsTimestamp: departueGTFSTimestamp)
+
+            if tripDepartures[tripID] != nil {
+                tripDepartures[tripID]!.append(departueDate)
+            } else {
+                tripDepartures[tripID] = [departueDate]
+            }
         }
-        
-//        let query = """
-//        SELECT st.trip_id, st.departure_timestamp
-//        FROM stop_times AS st
-//        INNER JOIN trips AS t ON st.trip_id = t.trip_id
-//        WHERE st.stop_id = ? AND t.service_id IN ? AND st.departure_timestamp > ?
-//        """
-//        var statement: OpaquePointer?
-//        sqlite3_prepare_v2(db, query, -1, &statement, nil)
-//        sqlite3_bind_text(statement, 1, stop.platformIDs[0], -1, nil)
-//        for i in 0...serviceIDs.count - 1 {
-//            sqlite3_bind_text(statement, Int32(i + 1), serviceIDs[i], -1, nil)
-//        }
-//        sqlite3_bind_int(statement, Int32(1 + serviceIDs.count), Int32(currentGTFSTimestamp))
-//
-//        while sqlite3_step(statement) == SQLITE_ROW {
-//            let tripID = String(cString: sqlite3_column_text(statement, 0))
-//            let departueGTFSTimestamp = Int(sqlite3_column_int(statement, 1))
-//            let departueDate = gtfsTimestampToDate(serviceDate: date, gtfsTimestamp: departueGTFSTimestamp)
-//
-//            if tripDepartures[tripID] != nil {
-//                tripDepartures[tripID]!.append(departueDate)
-//            } else {
-//                tripDepartures[tripID] = [departueDate]
-//            }
-//        }
     } catch {
         print("Unable to fetch scheduled departures")
     }
@@ -144,26 +125,26 @@ func getScheduledDepartures(stop: Stop, serviceIDs: [String], date: Date, db: Co
 }
 
 
-func getActiveServices(date: Date, db: OpaquePointer) -> [String] {
+func getActiveServices(date: Date, db: Connection) -> [String] {
     var serviceIDs: [String] = []
     
-    // Parse the day of the week as a lowercase name (e.g. "monday").
-    let formatter = DateFormatter()
-    formatter.timeZone = TimeZone.current
-    formatter.dateFormat = "EEEE"
-    let weekday = formatter.string(from: date).lowercased()
-    
-    // Parse the date as an integer in YYYYMMDD format
-    formatter.dateFormat = "yyyyMMdd"
-    let dateInteger = Int(formatter.string(from: date))!
-    
-    let query = "SELECT service_id FROM calendar WHERE \(weekday) = 1 AND start_date <= \(dateInteger) AND end_date >= \(dateInteger)"
-    var statement: OpaquePointer?
-    sqlite3_prepare_v2(db, query, -1, &statement, nil)
-    
-    while sqlite3_step(statement) == SQLITE_ROW {
-        let serviceID = String(cString: sqlite3_column_text(statement, 0))
-        serviceIDs.append(serviceID)
+    do {
+        // Parse the day of the week as a lowercase name (e.g. "monday").
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "EEEE"
+        let weekday = formatter.string(from: date).lowercased()
+        
+        // Parse the date as an integer in YYYYMMDD format
+        formatter.dateFormat = "yyyyMMdd"
+        let dateInteger = Int(formatter.string(from: date))!
+        
+        let query = "SELECT service_id FROM calendar WHERE \(weekday) = 1 AND start_date <= \(dateInteger) AND end_date >= \(dateInteger)"
+        for row in try db.prepare(query) {
+            serviceIDs.append(row[0] as! String)
+        }
+    } catch {
+        print("Unable to fetch active Services")
     }
     
     return serviceIDs
@@ -178,8 +159,8 @@ func getClosestStopSQL(lat: Double, lon: Double, db: Connection) -> Stop? {
         let row = try db.prepare(query).next()!
         let id = row[0] as! String
         let distanceMiles = row[4]! as! Double * 0.000621371
-        for row2 in try db.prepare("SELECT stop_id FROM stops WHERE parent_station = \"\(id)\" AND location_type = 0") {
-            platformIDs.append(row2[0] as! String)
+        for platformRow in try db.prepare("SELECT stop_id FROM stops WHERE parent_station = \"\(id)\" AND location_type = 0") {
+            platformIDs.append(platformRow[0] as! String)
         }
         return Stop(stopID: id, stopName: row[3] as! String, platformIDs: platformIDs, distanceMiles: distanceMiles)
     } catch {
