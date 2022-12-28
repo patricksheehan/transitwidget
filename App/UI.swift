@@ -8,11 +8,11 @@ struct NearbyStationView: View, Sendable {
     var body: some View {
         VStack {
             Text(fetcher.closestStop.stopName)
-            ForEach(fetcher.stopArrivals.keys.sorted(), id: \.self) {
+            ForEach(fetcher.departuresMinutes.keys.sorted(), id: \.self) {
                 routeName in
                 HStack {
                     Text(routeName)
-                    Text(fetcher.stopArrivals[routeName]!.map{String($0)}.joined(separator: ","))
+                    Text(fetcher.departuresMinutes[routeName]!.map{String($0)}.joined(separator: ","))
                 }
             }
         }

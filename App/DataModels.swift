@@ -1,5 +1,4 @@
 import CoreLocation
-import SwiftCSV
 import SQLite3
 import SQLite
 import Foundation
@@ -21,7 +20,7 @@ class TransitDataFetcher: ObservableObject {
     @Published var departuresMinutes: [String: [Int]] = ["Sample Route": [1, 3, 15]]
     @Published var closestStop: Stop = Stop(stopID: "1", stopName: "Sample Stop", platformIDs: ["blah"], distanceMiles: 1.2)
     
-    let gtfsrtUrlString = "https://google.com"
+    let gtfsrtUrlString = "https://api.bart.gov/gtfsrt/tripupdate.aspx"
     
     var gtfsDb: OpaquePointer?
     
@@ -44,10 +43,10 @@ class TransitDataFetcher: ObservableObject {
             let userLocation = CLLocation(latitude: 37.768840, longitude: -122.433270)
             closestStop = getClosestStopSQL(lat: userLocation.coordinate.latitude, lon: userLocation.coordinate.longitude, db: gtfsDb)!
             let activeServiceIDs = getActiveServices(date: now, db: gtfsDb)
-            var departures = getScheduledDepartures(stop: closestStop, serviceIDs: activeServiceIDs, date: now, db: gtfsDb)
+            let departures = getScheduledDepartures(stop: closestStop, serviceIDs: activeServiceIDs, date: now, db: gtfsDb)
             let feedMessage = try TransitRealtime_FeedMessage(serializedData: data)
-            updateDepartures(stop: closestStop, feedMessage: feedMessage, departures: departures)
-            print("hola")
+            let updatedDepartures = updateDepartures(stop: closestStop, feedMessage: feedMessage, departures: departures)
+            let routeDepartures = convertTripsToRoutes(departures: updatedDepartures)
         }
     }
 }
@@ -81,13 +80,11 @@ func gtfsTimestampToDate(serviceDate: Date, gtfsTimestamp: Int) -> Date {
 }
 
 
-func getScheduledDepartures(stop: Stop, serviceIDs: [String], date: Date, db: Connection) -> [String: [Date]] {
-    var tripDepartures: [String: [Date]] = [:]
+func getScheduledDepartures(stop: Stop, serviceIDs: [String], date: Date, db: Connection) -> [String: Date] {
+    var tripDepartures: [String: Date] = [:]
     do {
         // Get the current timestamp relative to the service day.
         let currentGTFSTimestamp = dateToGTFSTimestamp(date: date)
-        
-        let serviceIDsBindString = serviceIDs.map{_ in "?"}.joined(separator: ",")
         
         assert(stop.platformIDs.count == 1, "Expecting only one platform per stop")
         
@@ -110,12 +107,7 @@ func getScheduledDepartures(stop: Stop, serviceIDs: [String], date: Date, db: Co
             let tripID = row[tripID]
             let departueGTFSTimestamp = row[departureTimestamp]
             let departueDate = gtfsTimestampToDate(serviceDate: date, gtfsTimestamp: departueGTFSTimestamp)
-
-            if tripDepartures[tripID] != nil {
-                tripDepartures[tripID]!.append(departueDate)
-            } else {
-                tripDepartures[tripID] = [departueDate]
-            }
+            tripDepartures[tripID] = departueDate
         }
     } catch {
         print("Unable to fetch scheduled departures")
@@ -171,70 +163,34 @@ func getClosestStopSQL(lat: Double, lon: Double, db: Connection) -> Stop? {
 }
 
 
-func updateDepartures(stop: Stop, feedMessage: TransitRealtime_FeedMessage, departures: [String: [Date]] ) {
-    // Create an empty array to store the routes and arrival times
-    var routeArrivalsDict: [String: [Int]] = [String: [Int]]()
-    
+func updateDepartures(stop: Stop, feedMessage: TransitRealtime_FeedMessage, departures: [String: Date] ) -> [String: Date] {
+    var updatedDepartures: [String: Date] = departures
     // Iterate over the entities in the feed message
     for entity in feedMessage.entity {
         // Check if the entity is a trip update
         if entity.hasTripUpdate {
             let tripUpdate = entity.tripUpdate
             
-            // Get the route ID from the trip update
-            let routeName = tripIDToRouteName(tripID: tripUpdate.trip.tripID, trips: trips, routes: routes)
-            
-            if routeName == nil {
-                continue
-            }
-            
             // Iterate over the stop times in the trip update
             for stopTimeUpdate in tripUpdate.stopTimeUpdate {
                 // Check if the stop ID matches the one we're looking for
-                if stopTimeUpdate.stopID == stop.stopID {
-                    print("Found stop match")
-                    // Get the arrival time from the stop time update
-                    let arrivalTime = stopTimeUpdate.arrival.time
-                    
-                    // Calculate the number of minutes until the arrival time
-                    let arrivalMinutes = Int((Int64(Date().timeIntervalSince1970) - arrivalTime) / 60)
-                    
-                    // Add the arrival time to the RouteArrivals object
-                    if routeArrivalsDict[routeName!] != nil {
-                        routeArrivalsDict[routeName!]?.append(arrivalMinutes)
-                    } else {
-                        routeArrivalsDict[routeName!] = [arrivalMinutes]
-                    }
+                if stop.platformIDs.contains(stopTimeUpdate.stopID) {
+                    let timeInterval = TimeInterval(stopTimeUpdate.departure.time)
+                    let date = Date(timeIntervalSince1970: timeInterval)
+                    updatedDepartures[tripUpdate.trip.tripID] = date
+                    print("Updated departure")
                 }
             }
         }
     }
     
     // Return the array of routes and arrival times
-    return routeArrivalsDict
+    return updatedDepartures
 }
 
 
-func tripIDToRouteName(tripID: String, trips: [Trip], routes: [Route]) -> String? {
-    var routeID: String? = nil
-    var routeName: String? = nil
-    
-    for trip in trips {
-        if trip.tripID == tripID {
-            routeID = trip.routeID
-            break
-        }
-    }
-    
-    for route in routes {
-        if route.routeID == routeID {
-            routeName = route.routeLongName
-            break
-        }
-    }
-    
-    return routeName
+func convertTripsToRoutes(departures: [String: Date]) -> [String: Date] {
+    return [:]
 }
-
 
 
