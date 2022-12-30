@@ -46,7 +46,17 @@ class TransitDataFetcher: ObservableObject {
             let departures = getScheduledDepartures(stop: closestStop, serviceIDs: activeServiceIDs, date: now, db: gtfsDb)
             let feedMessage = try TransitRealtime_FeedMessage(serializedData: data)
             let updatedDepartures = updateDepartures(stop: closestStop, feedMessage: feedMessage, departures: departures)
-            let routeDepartures = convertTripsToRoutes(departures: updatedDepartures)
+            let routeDepartures = getRouteDepartures(departures: updatedDepartures, db: gtfsDb)
+            let nextThreeDepartures = routeDepartures.mapValues { dates in
+                return dates.sorted(by: <).prefix(3)
+            }
+            departuresMinutes = nextThreeDepartures.mapValues { dates in
+                return dates.map { date in
+                    let minutesUntilDate = Int(date.timeIntervalSinceNow / 60)
+                    return minutesUntilDate
+                }
+            }
+            print("hola")
         }
     }
 }
@@ -177,8 +187,13 @@ func updateDepartures(stop: Stop, feedMessage: TransitRealtime_FeedMessage, depa
                 if stop.platformIDs.contains(stopTimeUpdate.stopID) {
                     let timeInterval = TimeInterval(stopTimeUpdate.departure.time)
                     let date = Date(timeIntervalSince1970: timeInterval)
-                    updatedDepartures[tripUpdate.trip.tripID] = date
-                    print("Updated departure")
+                    
+                    // Remove the trip if it was cancelled or has already departed
+                    if tripUpdate.trip.scheduleRelationship == .canceled || date.timeIntervalSinceNow < 0{
+                        updatedDepartures.removeValue(forKey: tripUpdate.trip.tripID)
+                    } else {
+                        updatedDepartures[tripUpdate.trip.tripID] = date
+                    }
                 }
             }
         }
@@ -189,8 +204,41 @@ func updateDepartures(stop: Stop, feedMessage: TransitRealtime_FeedMessage, depa
 }
 
 
-func convertTripsToRoutes(departures: [String: Date]) -> [String: Date] {
-    return [:]
+func getRouteDepartures(departures: [String: Date], db: Connection) -> [String: [Date]] {
+    var routeDepartures: [String: [Date]] = [:]
+    
+    do {
+        for (tripID, departureDate) in departures {
+            let routes = Table("routes")
+            let trips = Table("trips")
+            let routeID = Expression<String>("route_id")
+            let routeName = Expression<String>("route_long_name")
+            let tripIDColumn = Expression<String>("trip_id")
+            let query = routes.select(routeName)
+                .join(trips, on: routes[routeID] == trips[routeID])
+                .where(
+                    tripIDColumn == tripID
+                )
+            let row = try db.pluck(query)
+            if row == nil {
+                continue
+            }
+            var route = row![routeName]
+            // Pet peeve: chop off the source of a route, show only destination
+            if let range = route.range(of: "to ") {
+                route = String(route[range.upperBound...])
+            }
+            if routeDepartures[route] != nil {
+                routeDepartures[route]!.append(departureDate)
+            } else {
+                routeDepartures[route] = [departureDate]
+            }
+        }
+    } catch {
+        print("Error getting route names")
+    }
+    
+    return routeDepartures
 }
 
 

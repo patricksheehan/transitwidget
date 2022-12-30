@@ -6,13 +6,13 @@ struct NearbyStationView: View, Sendable {
     @EnvironmentObject var fetcher: TransitDataFetcher
     
     var body: some View {
-        VStack {
-            Text(fetcher.closestStop.stopName)
+        VStack(alignment: .leading) {
+            Text(fetcher.closestStop.stopName).font(Font.title)
             ForEach(fetcher.departuresMinutes.keys.sorted(), id: \.self) {
                 routeName in
-                HStack {
-                    Text(routeName)
-                    Text(fetcher.departuresMinutes[routeName]!.map{String($0)}.joined(separator: ","))
+                HStack{
+                    Text(routeName + ":").font(Font.headline)
+                    Text(fetcher.departuresMinutes[routeName]!.map{String($0)}.joined(separator: ", "))
                 }
             }
         }
