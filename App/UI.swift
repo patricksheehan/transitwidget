@@ -6,8 +6,9 @@ struct NearbyStationView: View, Sendable {
     @EnvironmentObject var fetcher: TransitDataFetcher
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(fetcher.closestStop.stopName).font(Font.title)
+        Text(fetcher.closestStop.stopName).font(Font.title)
+        Text("(" + String(round(fetcher.closestStop.distanceMiles ?? 0.0)) + " miles)").font(Font.caption)
+        List {
             ForEach(fetcher.departuresMinutes.keys.sorted(), id: \.self) {
                 routeName in
                 HStack{
@@ -18,7 +19,11 @@ struct NearbyStationView: View, Sendable {
         }
         .padding()
         .task {
-           try? await fetcher.fetchData()
+            try? await fetcher.fetchData()
         }
+        .refreshable {
+            try? await fetcher.fetchData()
+        }
+        Text("Last updated: " + (fetcher.lastUpdated ?? "")).font(Font.footnote)
     }
 }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CD17D0DE2946F45800D99D7C /* google_transit_20221001-20230212_v8 in Resources */ = {isa = PBXBuildFile; fileRef = CD17D0DD2946F45800D99D7C /* google_transit_20221001-20230212_v8 */; };
 		CD17D0E029484C7600D99D7C /* GTFS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD17D0DF29484C7600D99D7C /* GTFS.swift */; };
 		CD756B69294CE82400934CFE /* gtfs.db in Resources */ = {isa = PBXBuildFile; fileRef = CD756B68294CE82400934CFE /* gtfs.db */; };
 		CD756B6D2954163D00934CFE /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = CD756B6C2954163D00934CFE /* SQLite */; };
@@ -19,35 +18,8 @@
 		CDBC922B2946E0BC00679FDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBC920F2946E0BC00679FDA /* Assets.xcassets */; };
 		CDBC923F2946E0BC00679FDA /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBC92262946E0BC00679FDA /* UI.swift */; };
 		CDBC92402946E0BC00679FDA /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBC92272946E0BC00679FDA /* App.swift */; };
-		E542137025387A0200CCC9C3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E542136F25387A0200CCC9C3 /* WidgetKit.framework */; };
-		E542137225387A0300CCC9C3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E542137125387A0200CCC9C3 /* SwiftUI.framework */; };
-		E542137725387A0600CCC9C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E542137625387A0600CCC9C3 /* Assets.xcassets */; };
-		E542137B25387A0600CCC9C3 /* WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E542136D25387A0200CCC9C3 /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E54213D42538931900CCC9C3 /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54213D32538931900CCC9C3 /* UserDefaults+Ext.swift */; };
-		E54213D92538932300CCC9C3 /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54213D32538931900CCC9C3 /* UserDefaults+Ext.swift */; };
-		E54213DD2538979B00CCC9C3 /* FileManager+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54213DC2538979B00CCC9C3 /* FileManager+Ext.swift */; };
-		E54213E2253898DA00CCC9C3 /* FileManager+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54213DC2538979B00CCC9C3 /* FileManager+Ext.swift */; };
-		E542141E2538B68200CCC9C3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E542141D2538B68200CCC9C3 /* CoreDataStack.swift */; };
-		E54214232538B76C00CCC9C3 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E54214212538B76C00CCC9C3 /* DataModel.xcdatamodeld */; };
-		E54214262538B77500CCC9C3 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E54214212538B76C00CCC9C3 /* DataModel.xcdatamodeld */; };
-		E54214292538B77900CCC9C3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E542141D2538B68200CCC9C3 /* CoreDataStack.swift */; };
-		E55498382551D2160066870B /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55498372551D2160066870B /* Contact.swift */; };
-		E55498392551D2160066870B /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55498372551D2160066870B /* Contact.swift */; };
 		E55551B328E1D3FF005A5321 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E55551B228E1D3FF005A5321 /* README.md */; };
-		E5638AEA265D859D00E73B05 /* Widget+Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5638AE9265D859D00E73B05 /* Widget+Kind.swift */; };
-		E5638AEB265D859D00E73B05 /* Widget+Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5638AE9265D859D00E73B05 /* Widget+Kind.swift */; };
-		E5D2325E28DA5283002855D1 /* LockScreenWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D2325D28DA5283002855D1 /* LockScreenWidget.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E542137925387A0600CCC9C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E542134E253879B700CCC9C3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E542136C25387A0200CCC9C3;
-			remoteInfo = WidgetExamplesWidgetExtension;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		E542137F25387A0600CCC9C3 /* Embed Foundation Extensions */ = {
@@ -56,7 +28,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				E542137B25387A0600CCC9C3 /* WidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,10 +35,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CD17D0DD2946F45800D99D7C /* google_transit_20221001-20230212_v8 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "google_transit_20221001-20230212_v8"; sourceTree = "<group>"; };
 		CD17D0DF29484C7600D99D7C /* GTFS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTFS.swift; sourceTree = "<group>"; };
 		CD756B68294CE82400934CFE /* gtfs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = gtfs.db; sourceTree = "<group>"; };
-		CD756B6A295139A200934CFE /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		CDBC920B2946E0BC00679FDA /* DataModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
 		CDBC920C2946E0BC00679FDA /* gtfs-realtime.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "gtfs-realtime.pb.swift"; sourceTree = "<group>"; };
 		CDBC920F2946E0BC00679FDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,21 +44,10 @@
 		CDBC92122946E0BC00679FDA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDBC92262946E0BC00679FDA /* UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 		CDBC92272946E0BC00679FDA /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		E5421356253879B700CCC9C3 /* TransitWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransitWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E542136D25387A0200CCC9C3 /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5421356253879B700CCC9C3 /* Poppy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Poppy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E542136F25387A0200CCC9C3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		E542137125387A0200CCC9C3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		E542137625387A0600CCC9C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E542137825387A0600CCC9C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E54213CF253892AB00CCC9C3 /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtension.entitlements; sourceTree = "<group>"; };
-		E54213D32538931900CCC9C3 /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
-		E54213DC2538979B00CCC9C3 /* FileManager+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Ext.swift"; sourceTree = "<group>"; };
-		E542141D2538B68200CCC9C3 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		E54214222538B76C00CCC9C3 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
-		E55498372551D2160066870B /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		E55551B228E1D3FF005A5321 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		E5638AE9265D859D00E73B05 /* Widget+Kind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Widget+Kind.swift"; sourceTree = "<group>"; };
-		E5D2325D28DA5283002855D1 /* LockScreenWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenWidget.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,15 +62,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E542136A25387A0200CCC9C3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E542137225387A0300CCC9C3 /* SwiftUI.framework in Frameworks */,
-				E542137025387A0200CCC9C3 /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -124,9 +73,9 @@
 				CDBC920B2946E0BC00679FDA /* DataModels.swift */,
 				CDBC920C2946E0BC00679FDA /* gtfs-realtime.pb.swift */,
 				CDBC92262946E0BC00679FDA /* UI.swift */,
+				CD17D0DF29484C7600D99D7C /* GTFS.swift */,
 				CDBC920E2946E0BC00679FDA /* Resources */,
 				CDBC92102946E0BC00679FDA /* Supporting Files */,
-				CD17D0DF29484C7600D99D7C /* GTFS.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -151,12 +100,8 @@
 		E542134D253879B700CCC9C3 = {
 			isa = PBXGroup;
 			children = (
-				CD756B6A295139A200934CFE /* Secrets.xcconfig */,
 				E55551B228E1D3FF005A5321 /* README.md */,
-				CD17D0DD2946F45800D99D7C /* google_transit_20221001-20230212_v8 */,
 				CDBC920A2946E0BC00679FDA /* App */,
-				E542137325387A0300CCC9C3 /* WidgetExtension */,
-				E54213D22538930900CCC9C3 /* Shared */,
 				E542136E25387A0200CCC9C3 /* Frameworks */,
 				E5421357253879B700CCC9C3 /* Products */,
 			);
@@ -165,8 +110,7 @@
 		E5421357253879B700CCC9C3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E5421356253879B700CCC9C3 /* TransitWidget.app */,
-				E542136D25387A0200CCC9C3 /* WidgetExtension.appex */,
+				E5421356253879B700CCC9C3 /* Poppy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,76 +124,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E542137325387A0300CCC9C3 /* WidgetExtension */ = {
-			isa = PBXGroup;
-			children = (
-				E5D2325C28DA5265002855D1 /* LockScreenWidget */,
-				E542138D25387AED00CCC9C3 /* Resources */,
-				E55498AF2552C0B30066870B /* Supporting Files */,
-			);
-			path = WidgetExtension;
-			sourceTree = "<group>";
-		};
-		E542138D25387AED00CCC9C3 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				E542137625387A0600CCC9C3 /* Assets.xcassets */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		E54213D22538930900CCC9C3 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				E54C257B2538D02C000FFA46 /* CoreData */,
-				E55498362551D1F40066870B /* Models */,
-				E54213DC2538979B00CCC9C3 /* FileManager+Ext.swift */,
-				E54213D32538931900CCC9C3 /* UserDefaults+Ext.swift */,
-				E5638AE9265D859D00E73B05 /* Widget+Kind.swift */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
-		E54C257B2538D02C000FFA46 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				E542141D2538B68200CCC9C3 /* CoreDataStack.swift */,
-				E54214212538B76C00CCC9C3 /* DataModel.xcdatamodeld */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
-		E55498362551D1F40066870B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				E55498372551D2160066870B /* Contact.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		E55498AF2552C0B30066870B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E542137825387A0600CCC9C3 /* Info.plist */,
-				E54213CF253892AB00CCC9C3 /* WidgetExtension.entitlements */,
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E5D2325C28DA5265002855D1 /* LockScreenWidget */ = {
-			isa = PBXGroup;
-			children = (
-				E5D2325D28DA5283002855D1 /* LockScreenWidget.swift */,
-			);
-			path = LockScreenWidget;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E5421355253879B700CCC9C3 /* TransitWidget */ = {
+		E5421355253879B700CCC9C3 /* Poppy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E5421365253879BB00CCC9C3 /* Build configuration list for PBXNativeTarget "TransitWidget" */;
+			buildConfigurationList = E5421365253879BB00CCC9C3 /* Build configuration list for PBXNativeTarget "Poppy" */;
 			buildPhases = (
 				E5421352253879B700CCC9C3 /* Sources */,
 				E5421353253879B700CCC9C3 /* Frameworks */,
@@ -259,9 +139,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				E542137A25387A0600CCC9C3 /* PBXTargetDependency */,
 			);
-			name = TransitWidget;
+			name = Poppy;
 			packageProductDependencies = (
 				CD90BDAB2946DB3900CE1056 /* SwiftProtobuf */,
 				CD90BDAD2946DB3900CE1056 /* SwiftProtobufPluginLibrary */,
@@ -269,25 +148,8 @@
 				CD756B6C2954163D00934CFE /* SQLite */,
 			);
 			productName = WidgetExamples;
-			productReference = E5421356253879B700CCC9C3 /* TransitWidget.app */;
+			productReference = E5421356253879B700CCC9C3 /* Poppy.app */;
 			productType = "com.apple.product-type.application";
-		};
-		E542136C25387A0200CCC9C3 /* WidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E542137C25387A0600CCC9C3 /* Build configuration list for PBXNativeTarget "WidgetExtension" */;
-			buildPhases = (
-				E542136925387A0200CCC9C3 /* Sources */,
-				E542136A25387A0200CCC9C3 /* Frameworks */,
-				E542136B25387A0200CCC9C3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = WidgetExtension;
-			productName = WidgetExamplesWidgetExtension;
-			productReference = E542136D25387A0200CCC9C3 /* WidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -297,17 +159,14 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1210;
 				LastUpgradeCheck = 1410;
-				ORGANIZATIONNAME = "Pawel Wiszenko";
+				ORGANIZATIONNAME = "Patrick Sheehan";
 				TargetAttributes = {
 					E5421355253879B700CCC9C3 = {
 						CreatedOnToolsVersion = 12.0.1;
 					};
-					E542136C25387A0200CCC9C3 = {
-						CreatedOnToolsVersion = 12.0.1;
-					};
 				};
 			};
-			buildConfigurationList = E5421351253879B700CCC9C3 /* Build configuration list for PBXProject "TransitWidget" */;
+			buildConfigurationList = E5421351253879B700CCC9C3 /* Build configuration list for PBXProject "Poppy" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -324,8 +183,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E5421355253879B700CCC9C3 /* TransitWidget */,
-				E542136C25387A0200CCC9C3 /* WidgetExtension */,
+				E5421355253879B700CCC9C3 /* Poppy */,
 			);
 		};
 /* End PBXProject section */
@@ -336,17 +194,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDBC922B2946E0BC00679FDA /* Assets.xcassets in Resources */,
-				CD17D0DE2946F45800D99D7C /* google_transit_20221001-20230212_v8 in Resources */,
 				E55551B328E1D3FF005A5321 /* README.md in Resources */,
 				CD756B69294CE82400934CFE /* gtfs.db in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E542136B25387A0200CCC9C3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E542137725387A0600CCC9C3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,48 +206,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5638AEA265D859D00E73B05 /* Widget+Kind.swift in Sources */,
-				E54213D92538932300CCC9C3 /* UserDefaults+Ext.swift in Sources */,
 				CDBC923F2946E0BC00679FDA /* UI.swift in Sources */,
 				CDBC92402946E0BC00679FDA /* App.swift in Sources */,
-				E55498382551D2160066870B /* Contact.swift in Sources */,
-				E54214262538B77500CCC9C3 /* DataModel.xcdatamodeld in Sources */,
 				CD17D0E029484C7600D99D7C /* GTFS.swift in Sources */,
 				CDBC92292946E0BC00679FDA /* DataModels.swift in Sources */,
 				CDBC922A2946E0BC00679FDA /* gtfs-realtime.pb.swift in Sources */,
-				E54213E2253898DA00CCC9C3 /* FileManager+Ext.swift in Sources */,
-				E54214292538B77900CCC9C3 /* CoreDataStack.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E542136925387A0200CCC9C3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E55498392551D2160066870B /* Contact.swift in Sources */,
-				E54214232538B76C00CCC9C3 /* DataModel.xcdatamodeld in Sources */,
-				E5D2325E28DA5283002855D1 /* LockScreenWidget.swift in Sources */,
-				E542141E2538B68200CCC9C3 /* CoreDataStack.swift in Sources */,
-				E5638AEB265D859D00E73B05 /* Widget+Kind.swift in Sources */,
-				E54213DD2538979B00CCC9C3 /* FileManager+Ext.swift in Sources */,
-				E54213D42538931900CCC9C3 /* UserDefaults+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		E542137A25387A0600CCC9C3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E542136C25387A0200CCC9C3 /* WidgetExtension */;
-			targetProxy = E542137925387A0600CCC9C3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
 		E5421363253879BB00CCC9C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CD756B6A295139A200934CFE /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -460,7 +280,6 @@
 		};
 		E5421364253879BB00CCC9C3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CD756B6A295139A200934CFE /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -517,21 +336,22 @@
 		E5421366253879BB00CCC9C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "App/Supporting Files/App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = DMCVYHA293;
+				DEVELOPMENT_TEAM = 9ZW3R444U6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "App/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Poppy;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pawelwiszenko.WidgetExamples;
+				PRODUCT_BUNDLE_IDENTIFIER = com.patricksheehan.Poppy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -541,68 +361,23 @@
 		E5421367253879BB00CCC9C3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "App/Supporting Files/App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = DMCVYHA293;
+				DEVELOPMENT_TEAM = 9ZW3R444U6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "App/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Poppy;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pawelwiszenko.WidgetExamples;
+				PRODUCT_BUNDLE_IDENTIFIER = com.patricksheehan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		E542137D25387A0600CCC9C3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = "WidgetExtension/Supporting Files/WidgetExtension.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DMCVYHA293;
-				INFOPLIST_FILE = "WidgetExtension/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pawelwiszenko.WidgetExamples.WidgetExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		E542137E25387A0600CCC9C3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = "WidgetExtension/Supporting Files/WidgetExtension.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DMCVYHA293;
-				INFOPLIST_FILE = "WidgetExtension/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pawelwiszenko.WidgetExamples.WidgetExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -611,7 +386,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E5421351253879B700CCC9C3 /* Build configuration list for PBXProject "TransitWidget" */ = {
+		E5421351253879B700CCC9C3 /* Build configuration list for PBXProject "Poppy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E5421363253879BB00CCC9C3 /* Debug */,
@@ -620,20 +395,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E5421365253879BB00CCC9C3 /* Build configuration list for PBXNativeTarget "TransitWidget" */ = {
+		E5421365253879BB00CCC9C3 /* Build configuration list for PBXNativeTarget "Poppy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E5421366253879BB00CCC9C3 /* Debug */,
 				E5421367253879BB00CCC9C3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E542137C25387A0600CCC9C3 /* Build configuration list for PBXNativeTarget "WidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E542137D25387A0600CCC9C3 /* Debug */,
-				E542137E25387A0600CCC9C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -681,19 +447,6 @@
 			productName = "protoc-gen-swift";
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		E54214212538B76C00CCC9C3 /* DataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E54214222538B76C00CCC9C3 /* DataModel.xcdatamodel */,
-			);
-			currentVersion = E54214222538B76C00CCC9C3 /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = E542134E253879B700CCC9C3 /* Project object */;
 }

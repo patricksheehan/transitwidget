@@ -18,7 +18,7 @@
                BlueprintIdentifier = "E542136C25387A0200CCC9C3"
                BuildableName = "WidgetExtension.appex"
                BlueprintName = "WidgetExtension"
-               ReferencedContainer = "container:TransitWidget.xcodeproj">
+               ReferencedContainer = "container:Poppy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -30,9 +30,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E5421355253879B700CCC9C3"
-               BuildableName = "TransitWidget.app"
-               BlueprintName = "TransitWidget"
-               ReferencedContainer = "container:TransitWidget.xcodeproj">
+               BuildableName = "Poppy.app"
+               BlueprintName = "Poppy"
+               ReferencedContainer = "container:Poppy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -65,16 +65,16 @@
             BlueprintIdentifier = "E542136C25387A0200CCC9C3"
             BuildableName = "WidgetExtension.appex"
             BlueprintName = "WidgetExtension"
-            ReferencedContainer = "container:TransitWidget.xcodeproj">
+            ReferencedContainer = "container:Poppy.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E5421355253879B700CCC9C3"
-            BuildableName = "TransitWidget.app"
-            BlueprintName = "TransitWidget"
-            ReferencedContainer = "container:TransitWidget.xcodeproj">
+            BuildableName = "Poppy.app"
+            BlueprintName = "Poppy"
+            ReferencedContainer = "container:Poppy.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <EnvironmentVariables>
@@ -107,9 +107,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E5421355253879B700CCC9C3"
-            BuildableName = "TransitWidget.app"
-            BlueprintName = "TransitWidget"
-            ReferencedContainer = "container:TransitWidget.xcodeproj">
+            BuildableName = "Poppy.app"
+            BlueprintName = "Poppy"
+            ReferencedContainer = "container:Poppy.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

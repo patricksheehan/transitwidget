@@ -17,8 +17,9 @@ struct RouteArrivals: Identifiable {
 let GTFS_DB_URL = Bundle.main.path(forResource: "gtfs", ofType: "db")!
 
 class TransitDataFetcher: ObservableObject {
-    @Published var departuresMinutes: [String: [Int]] = ["Sample Route": [1, 3, 15]]
-    @Published var closestStop: Stop = Stop(stopID: "1", stopName: "Sample Stop", platformIDs: ["blah"], distanceMiles: 1.2)
+    @Published var departuresMinutes: [String: [Int]] = [:]
+    @Published var closestStop: Stop = Stop(stopID: "Fake", stopName: "Loading", platformIDs: ["Fake"])
+    @Published var lastUpdated: String?
     
     let gtfsrtUrlString = "https://api.bart.gov/gtfsrt/tripupdate.aspx"
     
@@ -56,7 +57,11 @@ class TransitDataFetcher: ObservableObject {
                     return minutesUntilDate
                 }
             }
-            print("hola")
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .long
+            dateFormatter.timeStyle = .short
+            dateFormatter.doesRelativeDateFormatting = true
+            lastUpdated = dateFormatter.string(from: now)
         }
     }
 }
